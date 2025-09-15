@@ -1,61 +1,96 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Projeto "Mais Simplificado" - Laravel Monolito
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este projeto é uma aplicação backend desenvolvida em **Laravel**, estruturada como um monolito.  
+O objetivo é fornecer uma base sólida para desenvolvimento, com suporte a banco de dados, cache e mensageria, além de estar totalmente containerizada com **Docker** e **Docker Compose**.
 
-## About Laravel
+## ✨ Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+* **Monólito Laravel:** Estrutura unificada e centralizada para facilitar o desenvolvimento.
+* **ORM Eloquent:** Abstração poderosa para manipulação do banco de dados relacional.
+* **Containerização Completa:** Docker + Docker Compose para garantir consistência e facilidade de configuração.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🚀 Tecnologias Utilizadas
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* **Framework PHP:** [Laravel 10.x](https://laravel.com/)
+* **Banco de Dados Relacional:** [MySQL](https://www.mysql.com/)
+* **Containerização:** [Docker](https://www.docker.com/) & [Docker Compose](https://docs.docker.com/compose/)
 
-## Learning Laravel
+## 📂 Estrutura do Projeto
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+O repositório está organizado com cada microsserviço em sua própria pasta, facilitando o desenvolvimento e a manutenção independente de cada um.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```
+.
+├── app/ # Código principal da aplicação (Models, Controllers, Services, etc.)
+├── bootstrap/ # Inicialização do framework
+├── config/ # Arquivos de configuração
+├── database/ # Migrations, Seeders e Factories
+├── docker/ # Configurações adicionais para containers
+├── public/ # Ponto de entrada público (index.php)
+├── resources/ # Views, arquivos de front-end (Blade, JS, CSS)
+├── routes/ # Definição de rotas (web.php, api.php)
+├── storage/ # Arquivos gerados (logs, cache, uploads)
+├── tests/ # Testes automatizados
+├── vendor/ # Dependências do Composer
+├── docker-compose.yml # Orquestração dos serviços
+├── Dockerfile # Configuração da imagem principal da aplicação
+├── package.json # Dependências do frontend (Vite, etc.)
+├── vite.config.js # Configuração do Vite
+└── README.md
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 📋 Pré-requisitos
 
-## Laravel Sponsors
+Antes de começar, certifique-se de que você tem as seguintes ferramentas instaladas em seu sistema:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+* [Docker Engine](https://docs.docker.com/engine/install/)
+* [Docker Compose](https://docs.docker.com/compose/install/)
 
-### Premium Partners
+## 🏁 Como Rodar o Projeto
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Siga os passos abaixo para configurar e executar o ambiente de desenvolvimento localmente.
 
-## Contributing
+**1. Clone o repositório:**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+git clone https://github.com/vitucs/d-backend-simplificado.git
+cd d-backend-simplificado
+```
 
-## Code of Conduct
+**2. Configure as variáveis de ambiente:**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+cp .env.example .env
+```
 
-## Security Vulnerabilities
+**3. Inicie os containers:**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Na pasta raiz do projeto (onde o arquivo `docker-compose.yml` está localizado), execute o comando abaixo. Ele irá construir as imagens e iniciar todos os serviços, bancos de dados e ferramentas em background.
 
-## License
+```bash
+docker-compose up -d --build
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**4. Execute as migrações do banco de dados:**
+
+Para criar as tabelas necessárias no MySQL, execute os comandos de migração do Laravel nos serviços que interagem com o banco de dados.
+
+```bash
+docker-compose exec app php artisan migrate
+```
+
+Pronto! A aplicação agora deve estar em execução. A **APP** estará escutando na porta definida no `docker-compose.yml`.
+
+## 🤝 Como Contribuir
+
+Contribuições são o que tornam a comunidade de código aberto um lugar incrível para aprender, inspirar e criar. Qualquer contribuição que você fizer será **muito apreciada**.
+
+1.  Faça um **Fork** do projeto
+2.  Crie uma **Branch** para sua Feature (`git checkout -b feature/AmazingFeature`)
+3.  Faça o **Commit** de suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4.  Faça o **Push** para a Branch (`git push origin feature/AmazingFeature`)
+5.  Abra um **Pull Request**
+
+## 📄 Licença
+
+Distribuído sob a Licença MIT. Veja o arquivo `LICENSE` para mais informações.
